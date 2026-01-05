@@ -28,7 +28,9 @@ export const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-6">
-              <img src={logo} alt="SYNCODE" className="h-10 w-auto" />
+              <div className="h-10 w-10 rounded-full overflow-hidden flex items-center justify-center bg-foreground/10">
+                <img src={logo} alt="SYNCODE" className="h-full w-full object-cover" />
+              </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs">
               Engineering software that scales. We build digital products with precision, 
