@@ -41,15 +41,23 @@ export const Navbar = () => {
           className={`
             flex items-center gap-3 px-4 py-3 rounded-full
             transition-all duration-500 ease-smooth
+            backdrop-blur-xl 
+            bg-gradient-to-r from-black/20 via-black/15 to-black/20
+            dark:from-white/15 dark:via-white/10 dark:to-white/15
+            border border-white/30 dark:border-white/20
+            shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+            dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.08)]
             ${isScrolled 
-              ? "glass shadow-soft" 
-              : "bg-background/30 backdrop-blur-sm border border-border/20"
+              ? "bg-gradient-to-r from-black/30 via-black/25 to-black/30 dark:from-white/20 dark:via-white/15 dark:to-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]" 
+              : ""
             }
           `}
         >
           {/* Logo */}
           <Link to="/" className="flex items-center pl-2">
-            <img src={logo} alt="SYNCODE" className="h-10 w-auto" />
+            <div className="h-10 w-10 rounded-full overflow-hidden flex items-center justify-center bg-foreground/10">
+              <img src={logo} alt="SYNCODE" className="h-full w-full object-cover" />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
