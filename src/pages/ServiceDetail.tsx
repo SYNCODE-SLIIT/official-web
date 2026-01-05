@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, CheckCircle, Code, Smartphone, ShoppingCart, Brain, Palette, Server } from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 const servicesData = {
@@ -188,7 +187,6 @@ const ServiceDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main>
         {/* Hero Section with Image */}
         <section className="relative pt-32 pb-0 md:pt-40">

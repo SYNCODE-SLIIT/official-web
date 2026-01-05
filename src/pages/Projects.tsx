@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 const projects = [
@@ -37,7 +36,6 @@ const projects = [
 const Projects = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main>
         {/* Hero Section */}
         <section className="pt-40 pb-24 md:pt-48 md:pb-32">

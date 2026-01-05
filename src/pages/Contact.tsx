@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Github, MapPin, Mail, ArrowUpRight } from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { useToast } from "@/hooks/use-toast";
 
@@ -38,7 +37,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main>
         {/* Hero Section */}
         <section className="pt-40 pb-24 md:pt-48 md:pb-32">
