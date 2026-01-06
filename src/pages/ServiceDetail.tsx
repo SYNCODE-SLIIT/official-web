@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, CheckCircle, Code, Smartphone, ShoppingCart, Brain, Palette, Server } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ArrowDown, CheckCircle, Code, Smartphone, ShoppingCart, Brain, Palette, Server } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 
 const servicesData = {
@@ -9,6 +9,12 @@ const servicesData = {
     title: "Custom Software Development",
     subtitle: "Full-stack applications and enterprise platforms tailored to your needs.",
     description: "We design and build custom software solutions that solve real business problems. From internal tools to customer-facing platforms, we engineer systems that scale with your business growth.",
+    extendedDescription: "Our engineering team specializes in crafting bespoke software that aligns perfectly with your business objectives. We combine cutting-edge technologies with proven architectural patterns to deliver solutions that are not only powerful today but remain maintainable and scalable for years to come.",
+    highlights: [
+      { label: "Technologies", value: "React, Node.js, Python, Go" },
+      { label: "Delivery Model", value: "Agile Sprints" },
+      { label: "Avg. Project Duration", value: "3-8 Months" },
+    ],
     heroImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80",
     features: [
       { title: "Full-stack Web Applications", description: "End-to-end development with modern frameworks and technologies." },
@@ -36,6 +42,12 @@ const servicesData = {
     title: "Web & Mobile Development",
     subtitle: "Cross-platform experiences with native performance on every device.",
     description: "We create responsive web applications and native mobile apps that deliver exceptional user experiences across all platforms, ensuring your product reaches users wherever they are.",
+    extendedDescription: "From sleek consumer apps to complex enterprise mobile solutions, we build products that users love. Our cross-platform expertise means faster time-to-market without sacrificing quality or native feel.",
+    highlights: [
+      { label: "Platforms", value: "iOS, Android, Web" },
+      { label: "Frameworks", value: "React Native, Flutter" },
+      { label: "App Store Success", value: "50+ Published Apps" },
+    ],
     heroImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80",
     features: [
       { title: "Responsive Web Applications", description: "Pixel-perfect websites that work flawlessly on any screen size." },
@@ -63,6 +75,12 @@ const servicesData = {
     title: "E-Commerce Solutions",
     subtitle: "Scalable storefronts and marketplaces optimized for conversion.",
     description: "We build e-commerce platforms that drive sales—from custom storefronts to multi-vendor marketplaces with seamless checkout experiences that convert visitors into loyal customers.",
+    extendedDescription: "Whether you're launching your first online store or scaling a global marketplace, we engineer e-commerce experiences that maximize conversions and customer lifetime value. Every pixel and every interaction is designed with your revenue in mind.",
+    highlights: [
+      { label: "Platforms", value: "Shopify, Custom, Headless" },
+      { label: "Payment Gateways", value: "Stripe, PayPal, etc." },
+      { label: "Avg. Conversion Lift", value: "+35%" },
+    ],
     heroImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80",
     features: [
       { title: "Custom E-commerce Platforms", description: "Tailored online stores built for your unique business model." },
@@ -90,6 +108,12 @@ const servicesData = {
     title: "AI & Intelligent Systems",
     subtitle: "AI agents, chatbots, and automation that transform business operations.",
     description: "We develop practical AI solutions that automate workflows, enhance customer interactions, and provide intelligent insights for better decision-making across your organization.",
+    extendedDescription: "Our AI solutions are built for real-world impact—not just demos. We focus on practical applications that deliver measurable ROI, from intelligent automation that saves hours of manual work to predictive systems that unlock new business opportunities.",
+    highlights: [
+      { label: "AI Stack", value: "OpenAI, LangChain, TensorFlow" },
+      { label: "Specialties", value: "NLP, Vision, Automation" },
+      { label: "Avg. Efficiency Gain", value: "+60%" },
+    ],
     heroImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80",
     features: [
       { title: "AI Agent Development", description: "Autonomous agents that handle complex tasks and workflows." },
@@ -117,6 +141,12 @@ const servicesData = {
     title: "UI/UX & Website Design",
     subtitle: "User-centered design that balances aesthetics with functionality.",
     description: "We create intuitive, beautiful interfaces that users love. Our design process is grounded in research and focused on delivering measurable results that elevate your brand.",
+    extendedDescription: "Great design is invisible—it just works. Our design philosophy combines user research, visual excellence, and strategic thinking to create experiences that feel effortless while driving real business outcomes.",
+    highlights: [
+      { label: "Tools", value: "Figma, Framer, Adobe CC" },
+      { label: "Approach", value: "User-Centered Design" },
+      { label: "Deliverables", value: "Prototypes & Systems" },
+    ],
     heroImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1600&q=80",
     features: [
       { title: "Product Design & Wireframing", description: "Strategic design thinking from concept to detailed mockups." },
@@ -144,6 +174,12 @@ const servicesData = {
     title: "Hosting, Maintenance & Support",
     subtitle: "Reliable infrastructure and ongoing support for peace of mind.",
     description: "We provide robust hosting solutions and ongoing maintenance to keep your applications running smoothly, securely, and efficiently around the clock.",
+    extendedDescription: "Your application is only as good as its uptime. We offer comprehensive hosting and support packages that let you focus on your business while we handle the infrastructure, security, and performance optimization.",
+    highlights: [
+      { label: "Cloud Partners", value: "AWS, GCP, Vercel" },
+      { label: "Uptime SLA", value: "99.9%" },
+      { label: "Response Time", value: "< 2 Hours" },
+    ],
     heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80",
     features: [
       { title: "Web Hosting & Deployment", description: "Reliable cloud hosting with automated deployment pipelines." },
@@ -189,74 +225,116 @@ const ServiceDetail = () => {
     <div className="min-h-screen bg-background">
       <main>
         {/* Hero Section with Image */}
-        <section className="relative pt-32 pb-0 md:pt-40">
-          <div className="container-wide">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.6 }}
-              className="mb-8"
-            >
-              <Link to="/services" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 mb-8">
-                <ArrowLeft size={18} /> Back to Services
-              </Link>
-            </motion.div>
-          </div>
-          
-          {/* Hero Image */}
+        <section className="relative min-h-[92vh] w-full overflow-hidden">
           <motion.div 
             initial={{ opacity: 0, y: 40 }} 
             animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="absolute inset-0"
           >
             <img 
               src={service.heroImage} 
               alt={service.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-            
-            {/* Overlay Content */}
-            <div className="absolute bottom-0 left-0 right-0 container-wide pb-12 md:pb-16">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-2xl bg-background/90 backdrop-blur-sm flex items-center justify-center">
-                  <IconComponent size={28} className="text-foreground" />
-                </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
+          </motion.div>
+
+          <div className="absolute inset-0">
+            <div className="container-wide h-full flex flex-col justify-start gap-40 py-10 md:py-14">
+              <div className="flex justify-start mt-6">
+                <Link 
+                  to="/services" 
+                  className="inline-flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 text-white backdrop-blur-md transition hover:bg-black/70"
+                >
+                  <ArrowLeft size={18} /> Back to Services
+                </Link>
               </div>
-              <h1 className="text-display-lg md:text-display-xl text-white mb-4">{service.title}</h1>
-              <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">{service.subtitle}</p>
+
+              <div className="pb-2 md:pb-4">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 rounded-2xl bg-black/80 backdrop-blur-sm flex items-center justify-center text-white">
+                    <IconComponent size={28} />
+                  </div>
+                </div>
+                <h1 className="text-display-lg md:text-display-xl text-white mb-4">{service.title}</h1>
+                <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">{service.subtitle}</p>
+              </div>
             </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 12, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+            className="absolute bottom-8 md:bottom-10 left-0 right-0 flex justify-center"
+          >
+            <a
+              href="#service-detail-content"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-sm shadow-lg transition hover:-translate-y-1 hover:bg-black"
+              aria-label="Scroll to details"
+            >
+              <ArrowDown size={22} />
+            </a>
           </motion.div>
         </section>
 
         {/* Description Section */}
-        <section className="py-16 md:py-24">
+        <section id="service-detail-content" className="py-16 md:py-24">
           <div className="container-wide">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="max-w-3xl"
-            >
-              <h2 className="text-display-sm mb-6">Overview</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-            </motion.div>
+            <div className="grid lg:grid-cols-5 gap-12 items-start">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="lg:col-span-3"
+              >
+                <h2 className="text-display-sm mb-6">Overview</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  {service.description}
+                </p>
+                {service.extendedDescription && (
+                  <p className="text-base text-muted-foreground/80 leading-relaxed">
+                    {service.extendedDescription}
+                  </p>
+                )}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                viewport={{ once: true }}
+                className="lg:col-span-2 space-y-4"
+              >
+                {service.highlights?.map((highlight, index) => (
+                  <div
+                    key={index}
+                    className="group p-5 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:border-foreground/30 hover:shadow-lg hover:scale-[1.02] cursor-default"
+                  >
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1 group-hover:text-foreground/70 transition-colors">
+                      {highlight.label}
+                    </p>
+                    <p className="text-lg font-semibold text-foreground">
+                      {highlight.value}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Features Grid */}
-        <section className="py-16 md:py-24 bg-card">
+        <section className="py-16 md:py-24 bg-white">
           <div className="container-wide">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-display-sm mb-12"
+              className="text-display-sm mb-12 text-black"
             >
               What We Deliver
             </motion.h2>
@@ -268,13 +346,13 @@ const ServiceDetail = () => {
                   whileInView={{ opacity: 1, y: 0 }} 
                   transition={{ duration: 0.5, delay: index * 0.1 }} 
                   viewport={{ once: true }} 
-                  className="p-6 md:p-8 rounded-2xl bg-background border border-border/50 card-float"
+                  className="group p-6 md:p-8 rounded-2xl bg-gray-50 border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:border-black hover:bg-black cursor-default"
                 >
                   <div className="flex items-start gap-4 mb-3">
-                    <CheckCircle size={22} className="text-foreground mt-0.5 flex-shrink-0" />
-                    <h3 className="text-lg font-semibold">{feature.title}</h3>
+                    <CheckCircle size={22} className="text-black group-hover:text-white mt-0.5 flex-shrink-0 transition-colors duration-300" />
+                    <h3 className="text-lg font-semibold text-black group-hover:text-white transition-colors duration-300">{feature.title}</h3>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed pl-9">
+                  <p className="text-black/70 group-hover:text-white/80 text-sm leading-relaxed pl-9 transition-colors duration-300">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -318,14 +396,14 @@ const ServiceDetail = () => {
         </section>
 
         {/* Process Section */}
-        <section className="py-16 md:py-24 bg-card">
+        <section className="py-24 md:py-32 bg-white">
           <div className="container-wide">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-display-sm mb-12 text-center"
+              className="text-display-sm mb-16 text-center text-black"
             >
               Our Process
             </motion.h2>
@@ -337,17 +415,23 @@ const ServiceDetail = () => {
                   whileInView={{ opacity: 1, y: 0 }} 
                   transition={{ duration: 0.4, delay: index * 0.1 }} 
                   viewport={{ once: true }} 
-                  className="relative text-center"
+                  className="group relative text-center"
                 >
-                  <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center text-lg font-bold mx-auto mb-4">
+                  <div className="w-12 h-12 rounded-full border-2 border-gray-400 bg-transparent text-black flex items-center justify-center text-lg font-bold mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:border-black">
                     {index + 1}
                   </div>
-                  <h3 className="font-semibold mb-2">{item.step}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
+                  <h3 className="font-semibold mb-2 text-black">{item.step}</h3>
+                  
+                  {/* Hover popup with description */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 pointer-events-none">
+                    <div className="bg-black text-white text-sm leading-relaxed p-4 rounded-xl shadow-xl">
+                      <p>{item.description}</p>
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-black rotate-45 rounded-sm" />
+                    </div>
+                  </div>
+                  
                   {index < service.process.length - 1 && (
-                    <div className="hidden md:block absolute top-6 left-[60%] w-[80%] h-px bg-border" />
+                    <div className="hidden md:block absolute top-6 left-[60%] w-[80%] h-px bg-gray-300" />
                   )}
                 </motion.div>
               ))}

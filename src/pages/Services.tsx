@@ -160,6 +160,20 @@ const Services = () => {
           </div>
         </section>
 
+        <section className="pb-10">
+          <div className="container-wide">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-display-sm font-semibold text-foreground">Explore Our Services</h2>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Services Grid */}
         <section id="services-grid" className="pb-32">
           <div className="container-wide">
