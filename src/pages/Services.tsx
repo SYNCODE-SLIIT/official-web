@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import modelSrc from "@/assets/texture_cube_-_free_download.glb";
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
       "model-viewer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
