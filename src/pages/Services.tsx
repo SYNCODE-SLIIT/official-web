@@ -1,8 +1,59 @@
+import type React from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Code, Smartphone, ShoppingCart, Brain, Palette, Server } from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
+import { ArrowUpRight, ArrowDown, Code, Smartphone, ShoppingCart, Brain, Palette, Server } from "lucide-react";
 import Footer from "@/components/layout/Footer";
+import modelSrc from "@/assets/texture_cube_-_free_download.glb";
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    interface IntrinsicElements {
+      "model-viewer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        src?: string;
+        poster?: string;
+        "camera-controls"?: boolean;
+        "auto-rotate"?: boolean;
+        "shadow-intensity"?: string | number;
+        exposure?: string | number;
+        ar?: boolean;
+        "disable-zoom"?: boolean;
+        "tone-mapping"?: string;
+        "environment-image"?: string;
+      };
+    }
+  }
+}
+
+const ModelViewer = () => {
+  useEffect(() => {
+    if (!document.querySelector("script[data-model-viewer]") && typeof window !== "undefined") {
+      const script = document.createElement("script");
+      script.type = "module";
+      script.src = "https://unpkg.com/@google/model-viewer@^4.0.0/dist/model-viewer.min.js";
+      script.async = true;
+      script.setAttribute("data-model-viewer", "true");
+      document.head.appendChild(script);
+    }
+  }, []);
+
+  return (
+    <div className="relative mx-auto aspect-[3/4] w-full max-w-[360px] overflow-hidden">
+      <model-viewer
+        src={modelSrc}
+        camera-controls
+        auto-rotate
+        ar
+        disable-zoom
+        shadow-intensity="0.8"
+        exposure="1"
+        tone-mapping="aces"
+        style={{ width: "100%", height: "100%", background: "transparent" }}
+      />
+    </div>
+  );
+};
 
 const services = [
   {
@@ -58,36 +109,74 @@ const services = [
 const Services = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="pt-40 pb-24 md:pt-48 md:pb-32">
+        <section className="pt-24 pb-20 md:pt-32 md:pb-28">
+          <div className="container-wide">
+            <div className="grid items-center gap-10 lg:grid-cols-2">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="max-w-4xl"
+              >
+                <span className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-4 block">
+                  Our Services
+                </span>
+                <h1 className="text-display-xl mb-6">
+                  Engineering-First
+                  <br />
+                  <span className="gradient-text">Digital Solutions</span>
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                  From concept to deployment, we build software that solves real problems. 
+                  Our approach combines technical expertise with strategic thinking to deliver 
+                  products that drive business growth.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              >
+                <ModelViewer />
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, y: [0, 10, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+              className="mt-0 flex justify-center"
+            >
+              <a
+                href="#services-grid"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background/80 backdrop-blur-sm text-foreground shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                aria-label="Scroll to services"
+              >
+                <ArrowDown size={24} />
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="pb-10">
           <div className="container-wide">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center"
             >
-              <span className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-4 block">
-                Our Services
-              </span>
-              <h1 className="text-display-xl mb-6">
-                Engineering-First
-                <br />
-                <span className="gradient-text">Digital Solutions</span>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                From concept to deployment, we build software that solves real problems. 
-                Our approach combines technical expertise with strategic thinking to deliver 
-                products that drive business growth.
-              </p>
+              <h2 className="text-display-sm font-semibold text-foreground">Explore Our Services</h2>
             </motion.div>
           </div>
         </section>
 
         {/* Services Grid */}
-        <section className="pb-32">
+        <section id="services-grid" className="pb-32">
           <div className="container-wide">
             <div className="grid md:grid-cols-2 gap-8">
               {services.map((service, index) => (
@@ -149,7 +238,7 @@ const Services = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-card border-t border-border">
+        <section className="py-24 bg-white border-t border-border">
           <div className="container-wide">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -158,12 +247,15 @@ const Services = () => {
               viewport={{ once: true }}
               className="text-center max-w-2xl mx-auto"
             >
-              <h2 className="text-display-md mb-6">Need Something Custom?</h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <h2 className="text-display-md mb-6 text-black">Need Something Custom?</h2>
+              <p className="text-lg text-black/70 mb-8">
                 Every project is unique. Let's discuss your specific requirements and 
                 explore how we can help.
               </p>
-              <Link to="/contact" className="btn-primary">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-white font-semibold transition hover:bg-black/90"
+              >
                 Start a Conversation
                 <ArrowUpRight size={18} className="ml-2" />
               </Link>
