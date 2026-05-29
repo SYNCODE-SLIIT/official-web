@@ -1,35 +1,103 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import Footer from "@/components/layout/Footer";
 
-const projects = [
+type ProjectItem = {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  mediaSrc: string;
+  bgImageSrc: string;
+  href: string;
+  hrefExternal?: boolean;
+  tags: string[];
+};
+
+const projects: ProjectItem[] = [
   {
     id: 1,
     title: "FinFlow Pro",
     category: "Enterprise Platform",
-    description: "A comprehensive financial management platform serving 50,000+ users with real-time analytics and intelligent automation.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop&auto=format",
-    path: "/projects/finflow-pro",
+    description:
+      "A comprehensive financial management platform serving 50,000+ users with real-time analytics, secure transaction orchestration, and intelligent automation workflows for finance teams.",
+    mediaSrc: "/finflow.png",
+    bgImageSrc: "/finflow.png",
+    href: "/projects/finflow-pro",
     tags: ["React", "Node.js", "PostgreSQL", "AI/ML"],
   },
   {
     id: 2,
     title: "HealthSync",
     category: "Mobile Application",
-    description: "Cross-platform health tracking app with AI-powered insights, serving patients and healthcare providers worldwide.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=800&fit=crop&auto=format",
-    path: "/projects/healthsync",
-    tags: ["React Native", "TypeScript", "Firebase", "Machine Learning"],
+    description:
+      "Cross-platform health tracking app with AI-powered insights, wearable-device integrations, and a seamless mobile-first patient experience.",
+    mediaSrc: "/healthsync.png",
+    bgImageSrc: "/healthsync.png",
+    href: "/projects/healthsync",
+    tags: ["React Native", "TypeScript", "Firebase", "ML"],
   },
   {
     id: 3,
-    title: "Artisan Market",
-    category: "E-Commerce",
-    description: "Custom marketplace connecting independent artisans with global customers, featuring advanced search and personalized recommendations.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop&auto=format",
-    path: "/projects/artisan-market",
-    tags: ["Next.js", "Stripe", "Elasticsearch", "AWS"],
+    title: "China Lanka Motors",
+    category: "Automotive Website",
+    description:
+      "A conversion-focused automotive platform built for trust, inventory clarity, and smooth lead capture across desktop and mobile touchpoints.",
+    mediaSrc: "/chinalankamotors.png",
+    bgImageSrc: "/chinalankamotors.png",
+    href: "https://www.chinalankamotors.com/",
+    hrefExternal: true,
+    tags: ["Web Design", "Lead Generation", "Performance"],
+  },
+  {
+    id: 4,
+    title: "Jayas Victory Travels",
+    category: "Travel Platform",
+    description:
+      "A travel-focused web experience designed to highlight tours, simplify enquiries, and increase booking intent with a clear user journey.",
+    mediaSrc: "/jayasvictorytravel.png",
+    bgImageSrc: "/jayasvictorytravel.png",
+    href: "https://www.jayasvictorytravels.com/",
+    hrefExternal: true,
+    tags: ["Travel UX", "Responsive UI", "Brand Website"],
+  },
+  {
+    id: 5,
+    title: "Hotel Seven Way",
+    category: "Hospitality Website",
+    description:
+      "A modern hotel website experience focused on visual storytelling, room discovery, and direct conversion-ready booking flows.",
+    mediaSrc: "/hotelsevenway.png",
+    bgImageSrc: "/hotelsevenway.png",
+    href: "https://hotel-seven-way.vercel.app/",
+    hrefExternal: true,
+    tags: ["Hospitality", "UI/UX", "Conversion"],
+  },
+  {
+    id: 6,
+    title: "Maison Ashri",
+    category: "Lifestyle Brand Site",
+    description:
+      "A refined brand-forward web experience balancing minimal design, visual hierarchy, and smooth storytelling for premium positioning.",
+    mediaSrc: "/maisonashri.png",
+    bgImageSrc: "/maisonashri.png",
+    href: "https://maisonashri.vercel.app/",
+    hrefExternal: true,
+    tags: ["Branding", "Visual Design", "Front-End"],
+  },
+  {
+    id: 7,
+    title: "Unicare Connect",
+    category: "Healthcare Platform",
+    description:
+      "A healthcare-oriented digital platform built for clarity, accessibility, and trust with patient-first information architecture.",
+    mediaSrc: "/unicareconnect.png",
+    bgImageSrc: "/unicareconnect.png",
+    href: "https://www.unicareconnect.com/",
+    hrefExternal: true,
+    tags: ["Healthcare", "Accessibility", "Product Design"],
   },
 ];
 
@@ -37,8 +105,7 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-background">
       <main>
-        {/* Hero Section */}
-        <section className="pt-40 pb-24 md:pt-48 md:pb-32">
+        <section className="pt-36 pb-16 md:pt-44 md:pb-24">
           <div className="container-wide">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -46,117 +113,61 @@ const Projects = () => {
               transition={{ duration: 0.6 }}
               className="max-w-4xl"
             >
-              <span className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-4 block">
+              <span className="mb-4 block text-sm font-medium uppercase tracking-widest text-muted-foreground">
                 Our Work
               </span>
-              <h1 className="text-display-xl mb-6">
+              <h1 className="mb-6 text-display-xl">
                 Selected
                 <br />
                 <span className="gradient-text">Projects</span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                A showcase of our most impactful work. Each project represents our commitment 
-                to engineering excellence and delivering measurable results.
+              <p className="max-w-3xl text-xl leading-relaxed text-muted-foreground">
+                Scroll through each project to expand the visuals and explore the story behind the
+                product, platform, or brand experience.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Projects List */}
-        <section className="pb-32">
-          <div className="container-wide">
-            <div className="space-y-20">
-              {projects.map((project, index) => (
-                <motion.article
-                  key={project.id}
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7 }}
-                  viewport={{ once: true }}
-                  className={`grid lg:grid-cols-2 gap-12 items-center ${
-                    index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Image */}
-                  <Link 
-                    to={project.path} 
-                    className={`group block ${index % 2 === 1 ? "lg:order-2" : ""}`}
-                  >
-                    <div className="relative overflow-hidden rounded-3xl aspect-[4/3]">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 
-                                   group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-background/40 opacity-0 
-                                      group-hover:opacity-100 transition-opacity duration-500
-                                      flex items-center justify-center">
-                        <span className="flex items-center gap-2 px-6 py-3 glass rounded-full 
-                                         text-foreground font-semibold">
-                          View Case Study
-                          <ArrowUpRight size={18} />
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-
-                  {/* Content */}
-                  <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                    <span className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-4 block">
-                      {project.category}
-                    </span>
-                    <h2 className="text-display-md mb-4">{project.title}</h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                      {project.description}
-                    </p>
-                    
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-4 py-2 text-sm font-medium text-foreground/70 
-                                     bg-foreground/5 rounded-full border border-border/50"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <Link
-                      to={project.path}
-                      className="inline-flex items-center gap-2 text-foreground font-semibold 
-                                 group/link link-underline"
-                    >
-                      View Full Case Study
-                      <ArrowUpRight 
-                        size={18} 
-                        className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 
-                                   transition-transform duration-300" 
-                      />
-                    </Link>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+        <section className="pb-10">
+          <div className="space-y-0">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                <ScrollExpandMedia
+                  mediaType="image"
+                  mediaSrc={project.mediaSrc}
+                  bgImageSrc={project.bgImageSrc}
+                  title={project.title}
+                  category={project.category}
+                  description={project.description}
+                  tags={project.tags}
+                  href={project.href}
+                  hrefExternal={project.hrefExternal}
+                />
+              </motion.div>
+            ))}
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-24 bg-card border-t border-border">
+        <section className="border-t border-border bg-card py-24">
           <div className="container-wide">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center max-w-2xl mx-auto"
+              className="mx-auto max-w-2xl text-center"
             >
-              <h2 className="text-display-md mb-6">Have a Project in Mind?</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Let's explore how we can bring your vision to life with the same dedication 
-                and expertise.
+              <h2 className="mb-6 text-display-md">Have a Project in Mind?</h2>
+              <p className="mb-8 text-lg text-muted-foreground">
+                Let&apos;s build your next product with the same quality, attention to detail, and
+                measurable outcomes.
               </p>
               <Link to="/contact" className="btn-primary">
                 Start Your Project

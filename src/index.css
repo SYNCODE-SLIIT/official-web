@@ -282,6 +282,15 @@
   .container-wide {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  .loader {
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 2px solid hsl(0 0% 100% / 0.25);
+    border-top-color: hsl(0 0% 100%);
+    border-radius: 9999px;
+    animation: spin 0.8s linear infinite;
+  }
 }
 
 @layer utilities {
@@ -339,6 +348,23 @@
     }
   }
 
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.52);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
   }
@@ -357,6 +383,10 @@
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-spotlight {
+    animation: spotlight 2s ease .75s 1 forwards;
   }
 
   /* Delay utilities */
