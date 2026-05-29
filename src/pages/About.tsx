@@ -1,13 +1,21 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Code2, Users, Lightbulb, Award, X } from "lucide-react";
+import { ArrowUpRight, Code2, Users, Lightbulb, Award } from "lucide-react";
+import { SplineSceneBasic } from "@/components/ui/demo";
+import TeamFileViewer, { TeamGroup } from "@/components/about/TeamFileViewer";
 import Footer from "@/components/layout/Footer";
+import sachithraAvatar from "@/assets/team/Sachithra.png";
+import praveenAvatar from "@/assets/team/Praveen.png";
+import pasanAvatar from "@/assets/team/Pasan.png";
+import vishwaAvatar from "@/assets/team/Vishwa.png";
+import kumodhAvatar from "@/assets/team/Kumodh.png";
+import anukAvatar from "@/assets/team/Anuk.png";
+import placeholderAvatar from "@/assets/syncode-logo-round.png";
 
 const stats = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "8", label: "Team Members" },
-  { value: "6+", label: "Years Experience" },
+  { value: "175+", label: "Projects Delivered" },
+  { value: "20+", label: "Team Members" },
+  { value: "4+", label: "Years Experience" },
   { value: "100%", label: "Client Satisfaction" },
 ];
 
@@ -15,7 +23,7 @@ const values = [
   {
     icon: Code2,
     title: "Engineering Excellence",
-    description: "We build software that works—cleanly architected, thoroughly tested, and built to last.",
+    description: "We build software that works - cleanly architected, thoroughly tested, and built to last.",
   },
   {
     icon: Users,
@@ -30,102 +38,203 @@ const values = [
   {
     icon: Award,
     title: "Quality Commitment",
-    description: "Every line of code, every design decision—quality is non-negotiable in everything we do.",
+    description: "Every line of code, every design decision - quality is non-negotiable in everything we do.",
   },
 ];
 
-const team = [
+const teamGroups: TeamGroup[] = [
   {
-    name: "Alex Chen",
-    role: "Founder & CEO",
-    bio: "15+ years in software engineering. Previously led engineering teams at Fortune 500 companies. Passionate about building products that make a difference.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format",
+    title: "CEO",
+    subtitle: "Product vision, architecture, and engineering leadership.",
+    members: [
+      {
+        name: "Sachithra",
+        primaryRole: "Founder & Engineering Lead",
+        secondaryRoles: ["Mobile Application Developer", "Software Engineer"],
+        responsibilities: [
+          "Product vision and strategic direction",
+          "System architecture decisions",
+          "Full-stack/software engineering",
+          "App development coordination",
+          "Technical leadership",
+        ],
+        avatar: sachithraAvatar,
+      },
+    ],
   },
   {
-    name: "Sarah Mitchell",
-    role: "CTO",
-    bio: "Full-stack architect with expertise in cloud infrastructure and distributed systems. Open source contributor and conference speaker.",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&auto=format",
+    title: "Data, AI & Analytics Team",
+    subtitle: "Data systems, AI workflows, analytics, and intelligence.",
+    members: [
+      {
+        name: "Praveen",
+        primaryRole: "Data Analyst / AI Engineer",
+        secondaryRoles: ["Software Engineer", "Machine Learning Engineer"],
+        responsibilities: [
+          "Business/data analytics",
+          "Predictive modeling",
+          "AI/ML solutions",
+          "Data-driven insights",
+          "Backend analytical systems",
+        ],
+        avatar: praveenAvatar,
+      },
+      {
+        name: "Pasan",
+        primaryRole: "Data Engineer / Data Analyst",
+        secondaryRoles: ["Web Scraping Specialist", "Machine Learning Engineer"],
+        responsibilities: [
+          "Data collection pipelines",
+          "Web scraping systems",
+          "Data preprocessing",
+          "Machine learning workflows",
+          "Analytics dashboards and insights",
+        ],
+        avatar: pasanAvatar,
+      },
+      {
+        name: "Rahul",
+        primaryRole: "Business Intelligence Analyst",
+        responsibilities: [
+          "Data reporting",
+          "Trend analysis",
+          "Dashboard preparation",
+          "KPI monitoring",
+          "Analytical support",
+        ],
+        avatar: placeholderAvatar,
+        imagePending: true,
+      },
+      {
+        name: "Vishwa",
+        primaryRole: "Business Systems Analyst",
+        secondaryRoles: ["Database Administrator", "Software Engineer"],
+        responsibilities: [
+          "Business analytics",
+          "Database management",
+          "System requirement analysis",
+          "Backend support",
+          "Software development assistance",
+        ],
+        avatar: vishwaAvatar,
+      },
+    ],
   },
   {
-    name: "Marcus Johnson",
-    role: "Lead Developer",
-    bio: "Specializes in React ecosystems and performance optimization. Built applications serving millions of users worldwide.",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&auto=format",
+    title: "Business & Database Operations",
+    subtitle: "Operational coordination and database execution.",
+    members: [
+      {
+        name: "Ravindu",
+        primaryRole: "Operations Coordinator",
+        secondaryRoles: ["SQL Developer", "Database Support Specialist"],
+        responsibilities: [
+          "SQL/database operations",
+          "Business process coordination",
+          "Data organization",
+          "Operational management",
+          "Reporting support",
+        ],
+        avatar: placeholderAvatar,
+        imagePending: true,
+      },
+    ],
   },
   {
-    name: "Emily Wong",
-    role: "Design Director",
-    bio: "Award-winning designer with a focus on user experience and brand identity. Previously at leading design agencies.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&auto=format",
+    title: "Design & Creative Team",
+    subtitle: "Brand visuals, user experience, and interface execution.",
+    members: [
+      {
+        name: "Chamath",
+        primaryRole: "Creative Technologist",
+        secondaryRoles: ["Graphic Designer", "Interactive Media Developer"],
+        responsibilities: [
+          "Graphic design",
+          "Visual content creation",
+          "Interactive media production",
+          "Creative prototyping",
+          "Digital branding assets",
+        ],
+        avatar: placeholderAvatar,
+        imagePending: true,
+      },
+      {
+        name: "Milinda",
+        primaryRole: "UI/UX Designer",
+        secondaryRoles: ["Front-End Developer"],
+        responsibilities: [
+          "User interface design",
+          "User experience optimization",
+          "Front-end implementation",
+          "Wireframing and prototyping",
+          "Responsive design systems",
+        ],
+        avatar: placeholderAvatar,
+        imagePending: true,
+      },
+    ],
   },
   {
-    name: "David Park",
-    role: "AI Engineer",
-    bio: "Machine learning specialist focusing on practical AI applications for business automation and intelligent systems.",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&auto=format",
+    title: "Infrastructure & Technical Support",
+    subtitle: "IT troubleshooting, maintenance, and systems support.",
+    members: [
+      {
+        name: "Kumodh",
+        primaryRole: "Systems Support Engineer",
+        secondaryRoles: ["Hardware Technician", "OS Support Specialist"],
+        responsibilities: [
+          "Hardware troubleshooting",
+          "Operating system support",
+          "Technical issue resolution",
+          "System maintenance",
+          "General IT problem-solving",
+        ],
+        avatar: kumodhAvatar,
+      },
+    ],
   },
   {
-    name: "Lisa Thompson",
-    role: "Project Manager",
-    bio: "Ensures every project runs smoothly from kickoff to launch. Expert in agile methodologies and client communication.",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&auto=format",
-  },
-  {
-    name: "Ryan Foster",
-    role: "Backend Developer",
-    bio: "Database architect and API specialist. Builds robust, scalable backend systems that power modern applications.",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&auto=format",
-  },
-  {
-    name: "Maya Rodriguez",
-    role: "Mobile Developer",
-    bio: "Cross-platform mobile expert with published apps reaching millions of downloads. React Native and Flutter specialist.",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&auto=format",
+    title: "General/Support Member",
+    subtitle: "Cross-team operational and coordination support.",
+    members: [
+      {
+        name: "Anuk",
+        primaryRole: "Team Support Member",
+        responsibilities: [
+          "Assisting team operations",
+          "General support tasks",
+          "Coordination assistance",
+        ],
+        avatar: anukAvatar,
+      },
+    ],
   },
 ];
 
 const About = () => {
-  const [selectedMember, setSelectedMember] = useState<typeof team[0] | null>(null);
-
   return (
     <div className="min-h-screen bg-background">
       <main>
         {/* Hero Section */}
-        <section className="pt-40 pb-24 md:pt-48 md:pb-32">
-          <div className="container-wide">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl"
-            >
-              <span className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-4 block">
-                About Us
-              </span>
-              <h1 className="text-display-xl mb-6">
-                We're Engineers Who
-                <br />
-                <span className="gradient-text">Love Building</span>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                SYNCODE is a software engineering studio founded on the belief that great 
-                technology should be accessible to every business. We combine technical 
-                mastery with genuine partnership to deliver products that matter.
-              </p>
-            </motion.div>
-          </div>
+        <section className="py-0">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <SplineSceneBasic />
+          </motion.div>
         </section>
 
         {/* Stats Section */}
-        <section className="pb-24 md:pb-32">
+        <section className="relative z-10 bg-background pt-14 pb-24 md:pt-20 md:pb-32">
           <div className="container-wide">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8"
+              className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8"
             >
               {stats.map((stat, index) => (
                 <motion.div
@@ -146,8 +255,22 @@ const About = () => {
           </div>
         </section>
 
+        {/* Curved Divider */}
+        <section aria-hidden="true" className="relative h-20 bg-background md:h-28">
+          <svg
+            className="absolute inset-0 h-full w-full"
+            viewBox="0 0 1440 140"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,100 C320,20 1120,20 1440,100 L1440,140 L0,140 Z"
+              fill="white"
+            />
+          </svg>
+        </section>
+
         {/* Story Section */}
-        <section className="py-24 md:py-32 bg-card">
+        <section className="bg-white pb-24 pt-16 text-black md:pb-32 md:pt-20">
           <div className="container-wide">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -156,26 +279,13 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-display-md mb-6">Our Story</h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    SYNCODE began with a simple observation: too many businesses struggle with 
-                    technology that doesn't work for them. Whether it's outdated systems, 
-                    misaligned solutions, or unreliable partners—the result is wasted time 
-                    and missed opportunities.
-                  </p>
-                  <p>
-                    We founded SYNCODE to change that. Our team brings together decades of 
-                    combined experience from leading technology companies, startups, and 
-                    agencies. But more importantly, we bring a shared commitment to doing 
-                    things right.
-                  </p>
-                  <p>
-                    Every project we take on is treated like our own. We invest the time to 
-                    understand your business, challenge assumptions, and build solutions that 
-                    genuinely solve problems. That's the SYNCODE difference.
-                  </p>
-                </div>
+                <h2 className="text-display-lg mb-6 font-display text-black">Our Story</h2>
+                <p className="max-w-2xl text-xl leading-relaxed text-zinc-700 md:text-2xl">
+                  SYNCODE was built to fix what businesses struggle with most: technology that
+                  slows growth instead of accelerating it. We combine deep engineering experience
+                  with true partnership to deliver software that solves real problems, moves fast,
+                  and creates measurable impact.
+                </p>
               </motion.div>
 
               <motion.div
@@ -185,16 +295,16 @@ const About = () => {
                 viewport={{ once: true }}
                 className="grid grid-cols-2 gap-6"
               >
-                {values.map((value, index) => (
+                {values.map((value) => (
                   <div
                     key={value.title}
-                    className="p-6 rounded-2xl bg-background border border-border/50"
+                    className="rounded-2xl border border-zinc-800/70 bg-black p-6"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center mb-4">
-                      <value.icon size={20} className="text-foreground" />
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
+                      <value.icon size={20} className="text-white" />
                     </div>
-                    <h3 className="font-semibold mb-2 text-sm">{value.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
+                    <h3 className="mb-2 text-sm font-semibold text-white">{value.title}</h3>
+                    <p className="text-xs leading-relaxed text-white/80">
                       {value.description}
                     </p>
                   </div>
@@ -218,94 +328,15 @@ const About = () => {
                 The Team
               </span>
               <h2 className="text-display-lg">
-                Meet the People
+                SYNCODE
                 <br />
-                <span className="gradient-text">Behind SYNCODE</span>
+                <span className="gradient-text">Team Explorer</span>
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {team.map((member, index) => (
-                <motion.button
-                  key={member.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
-                  viewport={{ once: true }}
-                  onClick={() => setSelectedMember(member)}
-                  className="group text-left"
-                >
-                  <div className="relative overflow-hidden rounded-2xl mb-4 aspect-square">
-                    <img
-                      src={member.avatar}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-500 
-                                 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-background/60 opacity-0 
-                                    group-hover:opacity-100 transition-opacity duration-300
-                                    flex items-center justify-center">
-                      <span className="text-sm font-medium text-foreground">View Profile</span>
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-foreground group-hover:text-foreground/80 
-                                 transition-colors duration-300">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{member.role}</p>
-                </motion.button>
-              ))}
-            </div>
+            <TeamFileViewer groups={teamGroups} />
           </div>
         </section>
-
-        {/* Team Member Modal */}
-        <AnimatePresence>
-          {selectedMember && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedMember(null)}
-            >
-              <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-md p-8 rounded-3xl bg-card border border-border 
-                           shadow-soft z-10"
-              >
-                <button
-                  onClick={() => setSelectedMember(null)}
-                  className="absolute top-4 right-4 p-2 text-muted-foreground 
-                             hover:text-foreground transition-colors duration-300"
-                >
-                  <X size={20} />
-                </button>
-
-                <div className="flex items-center gap-4 mb-6">
-                  <img
-                    src={selectedMember.avatar}
-                    alt={selectedMember.name}
-                    className="w-20 h-20 rounded-2xl object-cover"
-                  />
-                  <div>
-                    <h3 className="text-xl font-semibold">{selectedMember.name}</h3>
-                    <p className="text-muted-foreground">{selectedMember.role}</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground leading-relaxed">
-                  {selectedMember.bio}
-                </p>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* CTA Section */}
         <section className="py-24 bg-card border-t border-border">
@@ -319,8 +350,8 @@ const About = () => {
             >
               <h2 className="text-display-md mb-6">Want to Work With Us?</h2>
               <p className="text-lg text-muted-foreground mb-8">
-                We're always looking for talented individuals and exciting projects. 
-                Let's start a conversation.
+                We are always looking for talented individuals and exciting projects.
+                Let&apos;s start a conversation.
               </p>
               <Link to="/contact" className="btn-primary">
                 Get in Touch

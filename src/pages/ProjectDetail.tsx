@@ -7,7 +7,7 @@ const projectsData = {
   "finflow-pro": {
     title: "FinFlow Pro",
     category: "Enterprise Platform",
-    heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop&auto=format",
+    heroImage: "/finflow.png",
     overview: {
       client: "FinServe Corporation",
       timeline: "8 months",
@@ -25,7 +25,7 @@ const projectsData = {
       "API integrations with major banking systems",
     ],
     results: [
-      { metric: "50,000+", label: "Daily Active Users" },
+      { metric: "100+", label: "Active Users" },
       { metric: "99.9%", label: "Uptime" },
       { metric: "3x", label: "Processing Speed" },
       { metric: "40%", label: "Cost Reduction" },
@@ -36,14 +36,14 @@ const projectsData = {
       role: "VP of Technology, FinServe",
     },
     images: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&auto=format",
+      "/finflow.png",
+      "/finflow.png",
     ],
   },
   "healthsync": {
     title: "HealthSync",
     category: "Mobile Application",
-    heroImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1600&h=900&fit=crop&auto=format",
+    heroImage: "/healthsync.png",
     overview: {
       client: "HealthTech Solutions",
       timeline: "6 months",
@@ -61,10 +61,8 @@ const projectsData = {
       "Emergency contact and alert system",
     ],
     results: [
-      { metric: "500K+", label: "Downloads" },
-      { metric: "4.8", label: "App Store Rating" },
+      { metric: "50+", label: "Downloads" },
       { metric: "85%", label: "Daily Engagement" },
-      { metric: "HIPAA", label: "Compliant" },
     ],
     testimonial: {
       quote: "The team's expertise in both mobile development and healthcare compliance made all the difference. HealthSync has become our flagship product.",
@@ -72,49 +70,13 @@ const projectsData = {
       role: "CEO, HealthTech Solutions",
     },
     images: [
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&auto=format",
-    ],
-  },
-  "artisan-market": {
-    title: "Artisan Market",
-    category: "E-Commerce",
-    heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=900&fit=crop&auto=format",
-    overview: {
-      client: "Artisan Collective",
-      timeline: "5 months",
-      team: "4 engineers",
-      technologies: ["Next.js", "Stripe", "Elasticsearch", "PostgreSQL", "AWS"],
-    },
-    challenge: "Artisan Collective needed a marketplace platform that could showcase handcrafted products from independent artisans worldwide while providing a seamless shopping experience and fair compensation for creators.",
-    solution: "We built Artisan Market, a custom marketplace featuring advanced search, personalized recommendations, and a creator-first commission structure. The platform handles global transactions with multi-currency support and international shipping integration.",
-    features: [
-      "Advanced product search with AI recommendations",
-      "Multi-vendor marketplace with individual storefronts",
-      "Secure payment processing with Stripe Connect",
-      "Real-time inventory and order management",
-      "International shipping calculator and tracking",
-      "Creator analytics and payout dashboard",
-    ],
-    results: [
-      { metric: "10,000+", label: "Active Artisans" },
-      { metric: "$2M+", label: "Monthly GMV" },
-      { metric: "150+", label: "Countries Served" },
-      { metric: "15%", label: "Lower Fees" },
-    ],
-    testimonial: {
-      quote: "SYNCODE understood our vision from day one. They built a platform that truly serves our artisan community while delivering a world-class shopping experience.",
-      name: "Maria Rodriguez",
-      role: "Founder, Artisan Collective",
-    },
-    images: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop&auto=format",
+      "/healthsync.png",
+      "/healthsync.png",
     ],
   },
 };
 
-const projectOrder = ["finflow-pro", "healthsync", "artisan-market"];
+const projectOrder = ["finflow-pro", "healthsync"];
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
