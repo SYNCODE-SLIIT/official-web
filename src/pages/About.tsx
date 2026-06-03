@@ -4,12 +4,12 @@ import { ArrowUpRight, Code2, Users, Lightbulb, Award } from "lucide-react";
 import { SplineSceneBasic } from "@/components/ui/demo";
 import TeamFileViewer, { TeamGroup } from "@/components/about/TeamFileViewer";
 import Footer from "@/components/layout/Footer";
-import sachithraAvatar from "@/assets/team/Sachithra.png";
-import praveenAvatar from "@/assets/team/Praveen.png";
-import pasanAvatar from "@/assets/team/Pasan.png";
-import vishwaAvatar from "@/assets/team/Vishwa.png";
-import kumodhAvatar from "@/assets/team/Kumodh.png";
-import anukAvatar from "@/assets/team/Anuk.png";
+import sachithraAvatar from "@/assets/team/Sachithra.webp";
+import praveenAvatar from "@/assets/team/Praveen.webp";
+import pasanAvatar from "@/assets/team/Pasan.webp";
+import vishwaAvatar from "@/assets/team/Vishwa.webp";
+import kumodhAvatar from "@/assets/team/Kumodh.webp";
+import anukAvatar from "@/assets/team/Anuk.webp";
 import placeholderAvatar from "@/assets/syncode-logo-round.png";
 
 const stats = [

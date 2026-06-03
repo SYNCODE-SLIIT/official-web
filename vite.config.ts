@@ -16,4 +16,32 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Improve chunking to reduce initial bundle size
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunk — heavy libraries loaded separately
+          "vendor-react": ["react", "react-dom", "react-router-dom"],
+          "vendor-motion": ["framer-motion"],
+          "vendor-radix": [
+            "@radix-ui/react-accordion",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-tooltip",
+          ],
+          "vendor-spline": ["@splinetool/react-spline", "@splinetool/runtime"],
+          "vendor-query": ["@tanstack/react-query"],
+        },
+      },
+    },
+    // Warn if any chunk exceeds 800KB
+    chunkSizeWarningLimit: 800,
+    // Enable minification
+    minify: "esbuild",
+    // Generate source maps for production debugging (disable if not needed)
+    sourcemap: false,
+    // Optimize CSS
+    cssMinify: true,
+  },
 }));
