@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const WHATSAPP_NUMBER = "94XXXXXXXXX"; // Replace with your WhatsApp number (no +, no spaces)
+const WHATSAPP_NUMBER = "94702911223"; // SYNCODE WhatsApp Business
 const WHATSAPP_MESSAGE = "Hi SYNCODE! I'm interested in your web development services.";
 
 export const WhatsAppButton = () => {
