@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
-import heroVideo from "@/assets/hero-video.mp4";
 
 export const Hero = () => {
   return (
@@ -13,9 +12,11 @@ export const Hero = () => {
           loop
           muted
           playsInline
+          preload="none"
+          poster="/hero-poster.webp"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Overlay */}
         <div className="absolute inset-0 video-overlay" />

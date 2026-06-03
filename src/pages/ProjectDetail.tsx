@@ -7,7 +7,7 @@ const projectsData = {
   "finflow-pro": {
     title: "FinFlow Pro",
     category: "Enterprise Platform",
-    heroImage: "/finflow.png",
+    heroImage: "/finflow.webp",
     overview: {
       client: "FinServe Corporation",
       timeline: "8 months",
@@ -36,14 +36,14 @@ const projectsData = {
       role: "VP of Technology, FinServe",
     },
     images: [
-      "/finflow.png",
-      "/finflow.png",
+      "/finflow.webp",
+      "/finflow.webp",
     ],
   },
   "healthsync": {
     title: "HealthSync",
     category: "Mobile Application",
-    heroImage: "/healthsync.png",
+    heroImage: "/healthsync.webp",
     overview: {
       client: "HealthTech Solutions",
       timeline: "6 months",
@@ -70,8 +70,8 @@ const projectsData = {
       role: "CEO, HealthTech Solutions",
     },
     images: [
-      "/healthsync.png",
-      "/healthsync.png",
+      "/healthsync.webp",
+      "/healthsync.webp",
     ],
   },
 };
